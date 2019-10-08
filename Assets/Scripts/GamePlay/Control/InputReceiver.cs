@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace GamePlay.Control
 {
-    internal class InputReceiver : MonoBehaviour
+    internal class InputReceiver
     {
         private IControllable controllable;
 
-        private void Awake()
+        public InputReceiver(IControllable controllable)
         {
-            controllable = GetComponent<IControllable>();
+            this.controllable = controllable;
         }
-
+        
         public void Move(Vector2 direction)
         {
             controllable.Move(direction.normalized);

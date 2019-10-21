@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace GamePlay.Control
 {
     internal class InputReceiver
     {
-        private IControllable controllable;
+        private readonly IControllable controllable;
 
         public InputReceiver(IControllable controllable)
         {
@@ -20,6 +19,11 @@ namespace GamePlay.Control
         public void Jump()
         {
             controllable.Jump();
+        }
+
+        public bool IsCorrect()
+        {
+            return controllable != null;
         }
     }
 }

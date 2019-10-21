@@ -6,19 +6,31 @@ namespace GamePlay.Control
 {
     public class InputSender : UpdateableMonoBehaviour
     {
-        private IControllable controllable;
         private InputReceiver inputReceiver;
 
-        protected override void Awake()
+        private void Start()
         {
-            base.Awake();
-            inputReceiver = new InputReceiver(controllable);
+            inputReceiver = new InputReceiver(Locator.Resolve<IControllable>());
+
+            if (inputReceiver.IsCorrect())
+            {
+                Register(UpdateType.Default);
+            }
         }
 
         public override void DoUpdate(float deltaTime)
         {
-            base.DoUpdate(deltaTime);
             HandleMoveInput();
+        }
+
+        public override void DoFixedUpdate(float fixedDeltaTime)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void DoLateUpdate(float deltaTime)
+        {
+            throw new System.NotImplementedException();
         }
 
         private void HandleMoveInput()
@@ -28,9 +40,7 @@ namespace GamePlay.Control
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                {
-                    inputReceiver.Jump();
-                }
+                inputReceiver.Jump();
             }
         }
     }

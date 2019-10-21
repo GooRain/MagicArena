@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Projects\MagicArena" t="IncludeRecursive">
+    <e p="C:\Users\VITCOR\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\VITCOR\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MagicArena.-956409579.00" t="ExcludeRecursive" />
+    <e p="E:\Projects\MagicArena" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -18,12 +20,18 @@
           </e>
           <e p="Service" t="Include">
             <e p="ComponentLocator.cs" t="Include" />
-            <e p="IUpdateable.cs" t="Include" />
-            <e p="UpdateableMonoBehaviour.cs" t="Include" />
-            <e p="Updater.cs" t="Include" />
+            <e p="Locator.cs" t="Include" />
+            <e p="Updating" t="Include">
+              <e p="IUpdateable.cs" t="Include" />
+              <e p="UpdateableMonoBehaviour.cs" t="Include" />
+              <e p="Updateables.cs" t="Include" />
+              <e p="Updater.cs" t="Include" />
+              <e p="UpdateType.cs" t="Include" />
+            </e>
           </e>
           <e p="Utility" t="Include">
             <e p="AnimatorHash.cs" t="Include" />
+            <e p="Enum.cs" t="Include" />
             <e p="StringExt.cs" t="Include" />
             <e p="Vector.cs" t="Include" />
           </e>
@@ -34,7 +42,5 @@
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\reego\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\reego\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MagicArena.-1615941101.00" t="ExcludeRecursive" />
   </component>
 </project>

@@ -1,11 +1,12 @@
 ﻿using System;
 using GamePlay.Control;
+using Service;
 using UnityEngine;
 using Utility;
 
 namespace GamePlay.Entity
 {
-    public class Unit : MonoBehaviour, IControllable
+    public class Unit : UpdateableMonoBehaviour, IControllable
     {
         [SerializeField] private Animator animator;
         [SerializeField] private float moveSpeed;
@@ -17,14 +18,27 @@ namespace GamePlay.Entity
 
         private float currentMoveSpeed;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             cachedTransform = transform;
+            
+            Register(UpdateType.Default);
         }
 
-        private void Update()
+        public override void DoUpdate(float deltaTime)
         {
             animator.SetFloat(AnimatorHash.Move, currentMoveSpeed);
+        }
+
+        public override void DoFixedUpdate(float fixedDeltaTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DoLateUpdate(float deltaTime)
+        {
+            throw new NotImplementedException();
         }
 
         public void Move(Vector2 direction)

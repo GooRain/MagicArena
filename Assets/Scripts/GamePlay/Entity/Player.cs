@@ -1,13 +1,14 @@
-using System;
 using GamePlay.Control;
-using UnityEngine;
+using Service;
 
 namespace GamePlay.Entity
 {
-    [RequireComponent(typeof(InputReceiver))]
     public class Player : Unit
     {
-        
-
+        protected override void Awake()
+        {
+            base.Awake();
+            Locator.Register<IControllable>(this);
+        }
     }
 }

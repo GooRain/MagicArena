@@ -17,27 +17,20 @@ namespace Service
 
         public bool IsEnabled { get; private set; }
 
+        private Updater updater;
+
         protected virtual void Awake()
         {
-            ComponentLocator.Resolve<Updater>().Registrate(this);
+            updater = ComponentLocator.Resolve<Updater>();
         }
 
-        public virtual void DoUpdate(float deltaTime)
-        {
-            
-        }
+        public abstract void DoUpdate(float deltaTime);
+        public abstract void DoFixedUpdate(float fixedDeltaTime);
+        public abstract void DoLateUpdate(float deltaTime);
 
-        public virtual void DoFixedUpdate(float fixedDeltaTime)
+        protected void Register(UpdateType type)
         {
-        }
-
-        public virtual void DoLateUpdate(float deltaTime)
-        {
-        }
-
-        protected virtual void OnDestroy()
-        {
-            ComponentLocator.Resolve<Updater>().Delete(this);
+            updater.Register(type, this);
         }
     }
 }

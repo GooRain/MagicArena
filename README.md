@@ -1,1 +1,1 @@
-# Unity Project to train skills
+# Skill training project

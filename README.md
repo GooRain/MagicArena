@@ -1,1 +1,1 @@
-# MagicArena
+# Unity Project to train skills

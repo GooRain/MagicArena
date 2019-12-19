@@ -51,6 +51,8 @@ namespace GamePlay.Entity
             currentPosition = cachedTransform.position;
             nextPosition = currentPosition + moveSpeed * deltaTime * direction.ToXYZ();
             cachedTransform.position = nextPosition;
+
+            cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
         }
 
         public void Jump()

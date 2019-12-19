@@ -2,9 +2,7 @@ using UnityEngine;
 
 namespace GamePlay.Control
 {
-    public interface IControllable
+    public interface IControllable : IMovable, ICanJump
     {
-        void Move(Vector2 direction);
-        void Jump();
     }
 }

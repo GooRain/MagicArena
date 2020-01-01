@@ -9,9 +9,9 @@ namespace Service.Updating
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Initialize()
         {
-            new GameObject("[Instance] Updater").AddComponent<Updater>();
+            ComponentLocator.Register(new GameObject("[Instance] Updater").AddComponent<Updater>());
         }
-        
+
         private Dictionary<UpdateType, Updateables> updateablesDictionary;
 
         private float deltaTime;

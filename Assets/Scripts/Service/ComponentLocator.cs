@@ -40,7 +40,7 @@ namespace Service
                 return component as T;
             }
 
-            return Object.FindObjectOfType<T>();
+            return null;
         }
     }
 }

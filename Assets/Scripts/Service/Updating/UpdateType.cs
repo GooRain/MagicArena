@@ -1,4 +1,4 @@
-namespace Service
+namespace Service.Updating
 {
     public enum UpdateType
     {

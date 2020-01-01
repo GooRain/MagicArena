@@ -1,10 +1,10 @@
 ﻿using System;
-using GamePlay.Control;
-using Service;
+using FantasyGame.GamePlay.Control;
+using Service.Updating;
 using UnityEngine;
 using Utility;
 
-namespace GamePlay.Entity
+namespace FantasyGame.GamePlay.Entity
 {
     public class Unit : UpdateableMonoBehaviour, IControllable
     {

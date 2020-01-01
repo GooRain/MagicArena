@@ -11,6 +11,12 @@ namespace FantasyGame.GamePlay.Entity
         [SerializeField] private Animator animator;
         [SerializeField] private float moveSpeed;
 
+        [SerializeField]
+        private CharacterController characterController;
+
+        [SerializeField]
+        private float gravity = 9.8f;
+
         private Vector3 currentPosition;
         private Vector3 nextPosition;
         private Transform cachedTransform;
@@ -50,8 +56,12 @@ namespace FantasyGame.GamePlay.Entity
             
             deltaTime = Time.deltaTime;
             currentPosition = cachedTransform.position;
-            nextPosition = currentPosition + moveSpeed * deltaTime * direction.ToXYZ();
-            cachedTransform.position = nextPosition;
+            var motion = moveSpeed * deltaTime * direction.ToXYZ();
+            nextPosition = currentPosition + motion;
+            // cachedTransform.position = nextPosition;
+
+            motion.y = -gravity * deltaTime;
+            characterController.Move(motion);
 
             cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
         }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8204807761021863538}
   - component: {fileID: 8204807761021863539}
+  - component: {fileID: 6215311986710729819}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,6 +47,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6498098599546082878}
   moveSpeed: 3
+  characterController: {fileID: 6215311986710729819}
+--- !u!143 &6215311986710729819
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204807761021863537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.85
+  m_Radius: 0.45
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.925, z: 0}
 --- !u!1001 &8204807762310680670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,6 +73,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8204807761021863538}
     m_Modifications:
+    - target: {fileID: -7717613655922784327, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b1caaa1f038cf24ebca72a3060353a4, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cca90ee2c78efe7489d3533de460e18d, type: 2}
     - target: {fileID: -4216859302048453862, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -108,11 +138,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: cca90ee2c78efe7489d3533de460e18d, type: 2}
     - target: {fileID: -927199367670048503, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
         type: 3}
       propertyPath: m_Name

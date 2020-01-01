@@ -7,22 +7,25 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="GamePlay" t="Include">
-            <e p="Control" t="Include">
-              <e p="ICanJump.cs" t="Include" />
-              <e p="IControllable.cs" t="Include" />
-              <e p="IMovable.cs" t="Include" />
-              <e p="InputReceiver.cs" t="Include" />
-              <e p="InputSender.cs" t="Include" />
+          <e p="FantasyGame" t="Include">
+            <e p="GamePlay" t="Include">
+              <e p="Control" t="Include">
+                <e p="ICanJump.cs" t="Include" />
+                <e p="IControllable.cs" t="Include" />
+                <e p="IMovable.cs" t="Include" />
+                <e p="InputReceiver.cs" t="Include" />
+                <e p="InputSender.cs" t="Include" />
+              </e>
+              <e p="Entity" t="Include">
+                <e p="Player.cs" t="Include" />
+                <e p="Unit.cs" t="Include" />
+              </e>
+              <e p="FollowObject.cs" t="Include" />
+              <e p="MouseLook.cs" t="Include" />
+              <e p="SmoothMouseLook.cs" t="Include" />
             </e>
-            <e p="Entity" t="Include">
-              <e p="Player.cs" t="Include" />
-              <e p="Unit.cs" t="Include" />
-            </e>
+            <e p="UpdateableBehaviour.cs" t="Include" />
           </e>
-          <e p="LoadCounter.cs" t="Include" />
-          <e p="LoadTest.cs" t="Include" />
-          <e p="LoginStat.cs" t="Include" />
           <e p="Service" t="Include">
             <e p="ComponentLocator.cs" t="Include" />
             <e p="Locator.cs" t="Include" />

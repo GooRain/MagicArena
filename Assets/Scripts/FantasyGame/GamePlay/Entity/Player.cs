@@ -1,7 +1,7 @@
-using GamePlay.Control;
+using FantasyGame.GamePlay.Control;
 using Service;
 
-namespace GamePlay.Entity
+namespace FantasyGame.GamePlay.Entity
 {
     public class Player : Unit
     {

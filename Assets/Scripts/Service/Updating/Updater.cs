@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utility;
 
-namespace Service
+namespace Service.Updating
 {
     public class Updater : MonoBehaviour
     {
@@ -12,42 +12,42 @@ namespace Service
             new GameObject("[Instance] Updater").AddComponent<Updater>();
         }
         
-        private Dictionary<UpdateType, Updateables> UpdateablesDictionary;
+        private Dictionary<UpdateType, Updateables> updateablesDictionary;
 
         private float deltaTime;
         private float fixedDeltaTime;
 
         private void Awake()
         {
-            UpdateablesDictionary = new Dictionary<UpdateType, Updateables>();
-            Enum<UpdateType>.ForEach(type => UpdateablesDictionary.Add(type, new Updateables(1000)));
+            updateablesDictionary = new Dictionary<UpdateType, Updateables>();
+            Enum<UpdateType>.ForEach(type => updateablesDictionary.Add(type, new Updateables(1000)));
         }
 
         private void Update()
         {
             deltaTime = Time.deltaTime;
-            UpdateablesDictionary[UpdateType.Default].Update(deltaTime);
+            updateablesDictionary[UpdateType.Default].Update(deltaTime);
         }
 
         private void FixedUpdate()
         {
             fixedDeltaTime = Time.fixedDeltaTime;
-            UpdateablesDictionary[UpdateType.Fixed].Update(fixedDeltaTime);
+            updateablesDictionary[UpdateType.Fixed].FixedUpdate(fixedDeltaTime);
         }
 
         private void LateUpdate()
         {
-            UpdateablesDictionary[UpdateType.Late].Update(deltaTime);
+            updateablesDictionary[UpdateType.Late].LateUpdate(deltaTime);
         }
 
         public void Delete(UpdateType type, IUpdateable updateableMonoBehaviour)
         {
-            UpdateablesDictionary[type].Delete(updateableMonoBehaviour);
+            updateablesDictionary[type].Delete(updateableMonoBehaviour);
         }
 
         public void Register(UpdateType type, IUpdateable updateableMonoBehaviour)
         {
-            UpdateablesDictionary[type].Register(updateableMonoBehaviour);
+            updateablesDictionary[type].Register(updateableMonoBehaviour);
         }
     }
 }

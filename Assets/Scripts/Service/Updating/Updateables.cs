@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Service
+namespace Service.Updating
 {
     public class Updateables
     {
@@ -16,10 +16,25 @@ namespace Service
 
         public void Update(float deltaTime)
         {
-            deltaTime = Time.deltaTime;
             for (var i = 0; i < currentCount; i++)
             {
                 updateables[i].DoUpdate(deltaTime);
+            }
+        }
+
+        public void FixedUpdate(float fixedDeltaTime)
+        {
+            for (var i = 0; i < currentCount; i++)
+            {
+                updateables[i].DoFixedUpdate(fixedDeltaTime);
+            }
+        }
+
+        public void LateUpdate(float deltaTime)
+        {
+            for (var i = 0; i < currentCount; i++)
+            {
+                updateables[i].DoLateUpdate(deltaTime);
             }
         }
 

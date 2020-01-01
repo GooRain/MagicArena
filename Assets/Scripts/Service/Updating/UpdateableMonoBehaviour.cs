@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Service
+namespace Service.Updating
 {
     public abstract class UpdateableMonoBehaviour : MonoBehaviour, IUpdateable
     {

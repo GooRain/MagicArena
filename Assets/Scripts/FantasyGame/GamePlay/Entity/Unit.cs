@@ -1,10 +1,10 @@
 ﻿using System;
-using GamePlay.Control;
-using Service;
+using FantasyGame.GamePlay.Control;
+using Service.Updating;
 using UnityEngine;
 using Utility;
 
-namespace GamePlay.Entity
+namespace FantasyGame.GamePlay.Entity
 {
     public class Unit : UpdateableMonoBehaviour, IControllable
     {
@@ -44,8 +44,9 @@ namespace GamePlay.Entity
         public void Move(Vector2 direction)
         {
             currentMoveSpeed = direction.magnitude;
-
-            if (!(Math.Abs(direction.x) > float.Epsilon) && !(Math.Abs(direction.y) > float.Epsilon)) return;
+            
+            if (IsDirectionZero(direction))
+                return;
             
             deltaTime = Time.deltaTime;
             currentPosition = cachedTransform.position;
@@ -53,6 +54,16 @@ namespace GamePlay.Entity
             cachedTransform.position = nextPosition;
 
             cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
+        }
+
+        private bool IsDirectionZero(Vector3 direction)
+        {
+            return (!IsDirectionAboveZero(direction.x) && !IsDirectionAboveZero(direction.y));
+        }
+        
+        private bool IsDirectionAboveZero(float direction)
+        {
+            return Mathf.Abs(direction) > float.Epsilon;
         }
 
         public void Jump()

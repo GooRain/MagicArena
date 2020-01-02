@@ -24,6 +24,8 @@ namespace FantasyGame.GamePlay.Entity
 
         private float currentMoveSpeed;
 
+        private Vector3 motion;
+
         protected override void Awake()
         {
             base.Awake();
@@ -52,11 +54,18 @@ namespace FantasyGame.GamePlay.Entity
             currentMoveSpeed = direction.magnitude;
             
             if (IsDirectionZero(direction))
+            {
+                motion.x = 0f;
+                motion.y = -gravity * deltaTime;
+                motion.z = 0f;
+                characterController.Move(motion);
                 return;
+            }
+            
+            motion = moveSpeed * deltaTime * direction.ToXYZ();
             
             deltaTime = Time.deltaTime;
             currentPosition = cachedTransform.position;
-            var motion = moveSpeed * deltaTime * direction.ToXYZ();
             nextPosition = currentPosition + motion;
             // cachedTransform.position = nextPosition;
 

@@ -1,15 +1,21 @@
 ﻿using System;
-using GamePlay.Control;
-using Service;
+using FantasyGame.GamePlay.Control;
+using Service.Updating;
 using UnityEngine;
 using Utility;
 
-namespace GamePlay.Entity
+namespace FantasyGame.GamePlay.Entity
 {
     public class Unit : UpdateableMonoBehaviour, IControllable
     {
         [SerializeField] private Animator animator;
         [SerializeField] private float moveSpeed;
+
+        [SerializeField]
+        private CharacterController characterController;
+
+        [SerializeField]
+        private float gravity = 9.8f;
 
         private Vector3 currentPosition;
         private Vector3 nextPosition;
@@ -17,6 +23,8 @@ namespace GamePlay.Entity
         private float deltaTime;
 
         private float currentMoveSpeed;
+
+        private Vector3 motion;
 
         protected override void Awake()
         {
@@ -46,12 +54,23 @@ namespace GamePlay.Entity
             currentMoveSpeed = direction.magnitude;
             
             if (IsDirectionZero(direction))
+            {
+                motion.x = 0f;
+                motion.y = -gravity * deltaTime;
+                motion.z = 0f;
+                characterController.Move(motion);
                 return;
+            }
+            
+            motion = moveSpeed * deltaTime * direction.ToXYZ();
             
             deltaTime = Time.deltaTime;
             currentPosition = cachedTransform.position;
-            nextPosition = currentPosition + moveSpeed * deltaTime * direction.ToXYZ();
-            cachedTransform.position = nextPosition;
+            nextPosition = currentPosition + motion;
+            // cachedTransform.position = nextPosition;
+
+            motion.y = -gravity * deltaTime;
+            characterController.Move(motion);
 
             cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
         }

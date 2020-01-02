@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Control
+namespace FantasyGame.GamePlay.Control
 {
     internal class InputReceiver
     {

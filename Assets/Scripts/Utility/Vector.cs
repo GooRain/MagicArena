@@ -13,5 +13,10 @@ namespace Utility
         {
             return new Vector3(vec.x, 0f, vec.y);
         }
+
+        public static Vector3 OnlyXZ(this Vector3 vec)
+        {
+            return new Vector3(vec.x, 0f, vec.y);
+        }
     }
 }

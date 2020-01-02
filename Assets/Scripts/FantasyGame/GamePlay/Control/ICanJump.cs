@@ -1,4 +1,4 @@
-namespace GamePlay.Control
+namespace FantasyGame.GamePlay.Control
 {
     public interface ICanJump
     {

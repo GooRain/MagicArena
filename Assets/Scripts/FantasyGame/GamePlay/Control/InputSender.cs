@@ -1,8 +1,9 @@
 using Service;
+using Service.Updating;
 using UnityEngine;
 using Utility;
 
-namespace GamePlay.Control
+namespace FantasyGame.GamePlay.Control
 {
     public class InputSender : UpdateableMonoBehaviour
     {

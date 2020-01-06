@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -619,13 +619,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc5e88c30a940828091bdbcd123ee38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 7.2
+  lookSensitivity: 5
   target: {fileID: 1030563911}
   distanceFromTarget: 2.5
   pitchMin: -45
   pitchMax: 90
-  rotationSmoothTime: 0.166
+  rotationSmoothTime: 0.0333
   startRotationAngle: {x: 20, y: 0, z: 0}
+  sharedDirection: {fileID: 11400000, guid: fa85aab6604934d4aa38f2e7377e3acd, type: 2}
 --- !u!1 &982601574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1022,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8204807761021863539, guid: 0afab8e0b8b0fe84a82fe3ae54138f05,
+        type: 3}
+      propertyPath: relativeTransform
+      value: 
+      objectReference: {fileID: 963194228}
     m_RemovedComponents:
     - {fileID: 8204807761021863436, guid: 0afab8e0b8b0fe84a82fe3ae54138f05, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0afab8e0b8b0fe84a82fe3ae54138f05, type: 3}

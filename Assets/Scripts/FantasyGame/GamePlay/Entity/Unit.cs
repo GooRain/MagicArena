@@ -8,8 +8,14 @@ namespace FantasyGame.GamePlay.Entity
 {
     public class Unit : UpdateableMonoBehaviour, IControllable
     {
-        [SerializeField] private Animator animator;
-        [SerializeField] private float moveSpeed;
+        [SerializeField]
+        private Animator animator;
+
+        [SerializeField]
+        private float moveSpeed;
+
+        [SerializeField]
+        private float dampingSpeed = 1f;
 
         [SerializeField]
         private CharacterController characterController;
@@ -24,19 +30,20 @@ namespace FantasyGame.GamePlay.Entity
 
         private float currentMoveSpeed;
 
+        private Vector3 currentMoveDirection;
         private Vector3 motion;
 
         protected override void Awake()
         {
             base.Awake();
             cachedTransform = transform;
-            
+
             Register(UpdateType.Default);
         }
 
         public override void DoUpdate(float deltaTime)
         {
-            animator.SetFloat(AnimatorHash.Move, currentMoveSpeed);
+            animator.SetFloat(AnimatorHash.Move, currentMoveSpeed / moveSpeed);
         }
 
         public override void DoFixedUpdate(float fixedDeltaTime)
@@ -51,35 +58,44 @@ namespace FantasyGame.GamePlay.Entity
 
         public void Move(Vector2 direction)
         {
-            currentMoveSpeed = direction.magnitude;
-            
-            if (IsDirectionZero(direction))
-            {
-                motion.x = 0f;
-                motion.y = -gravity * deltaTime;
-                motion.z = 0f;
-                characterController.Move(motion);
-                return;
-            }
-            
-            motion = moveSpeed * deltaTime * direction.ToXYZ();
-            
+            var relativeDirection = GetRelativeVector(direction);
+            currentMoveSpeed = Mathf.Lerp(currentMoveSpeed, relativeDirection.magnitude * moveSpeed, dampingSpeed * deltaTime);
+
+            motion = currentMoveDirection * (deltaTime * currentMoveSpeed);
+
             deltaTime = Time.deltaTime;
             currentPosition = cachedTransform.position;
             nextPosition = currentPosition + motion;
             // cachedTransform.position = nextPosition;
 
-            motion.y = -gravity * deltaTime;
+            ApplyGravity();
             characterController.Move(motion);
 
-            cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
+            if (!IsDirectionZero(relativeDirection))
+            {
+                cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
+                currentMoveDirection = relativeDirection;
+            }
+        }
+
+        private void ApplyGravity()
+        {
+            if (!characterController.isGrounded)
+            {
+                motion.y = -gravity * deltaTime;
+            }
+        }
+
+        protected virtual Vector3 GetRelativeVector(Vector2 direction)
+        {
+            return direction.ToXYZ();
         }
 
         private bool IsDirectionZero(Vector3 direction)
         {
             return (!IsDirectionAboveZero(direction.x) && !IsDirectionAboveZero(direction.y));
         }
-        
+
         private bool IsDirectionAboveZero(float direction)
         {
             return Mathf.Abs(direction) > float.Epsilon;
@@ -87,7 +103,6 @@ namespace FantasyGame.GamePlay.Entity
 
         public void Jump()
         {
-            
         }
     }
 }

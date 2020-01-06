@@ -7,6 +7,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Extensions" t="Include">
+            <e p="SharedQuaternion.cs" t="Include" />
+            <e p="SharedVariable.cs" t="Include" />
+            <e p="SharedVector2.cs" t="Include" />
+          </e>
           <e p="FantasyGame" t="Include">
             <e p="GamePlay" t="Include">
               <e p="Control" t="Include">
@@ -22,7 +27,7 @@
               </e>
               <e p="FollowObject.cs" t="Include" />
               <e p="MouseLook.cs" t="Include" />
-              <e p="SmoothMouseLook.cs" t="Include" />
+              <e p="SmoothOrbitLook.cs" t="Include" />
             </e>
             <e p="UpdateableBehaviour.cs" t="Include" />
           </e>

@@ -33,16 +33,12 @@ namespace FantasyGame.GamePlay
         [SerializeField]
         private Vector3 startRotationAngle;
 
-        [SerializeField]
-        private SharedQuaternion sharedDirection;
-
         private float yaw;
         private float pitch;
 
         private Transform cachedTransform;
         private Vector3 currentRotation;
         private Vector3 rotationSmoothVelocity;
-        private Quaternion rotation;
 
         public bool IsEnabled { get; }
 
@@ -60,11 +56,11 @@ namespace FantasyGame.GamePlay
 
         public void DoUpdate(float deltaTime)
         {
-            InputBehaviour();
         }
 
         public void DoLateUpdate(float deltaTime)
         {
+            InputBehaviour();
             SmoothLook();
         }
 
@@ -76,18 +72,13 @@ namespace FantasyGame.GamePlay
 
         private void SmoothLook()
         {
-            rotation = cachedTransform.rotation;
-
             pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
 
             currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity,
                 rotationSmoothTime);
 
-            rotation.eulerAngles = currentRotation;
+            cachedTransform.eulerAngles = currentRotation;
             cachedTransform.position = target.position - cachedTransform.forward * distanceFromTarget;
-            sharedDirection.SetValue(rotation);
-
-            cachedTransform.rotation = rotation;
         }
 
         public void DoFixedUpdate(float fixedDeltaTime)

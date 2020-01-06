@@ -18,6 +18,9 @@ namespace FantasyGame.GamePlay.Entity
         private float dampingSpeed = 1f;
 
         [SerializeField]
+        private float rotationSpeed = 5f;
+
+        [SerializeField]
         private CharacterController characterController;
 
         [SerializeField]
@@ -73,7 +76,8 @@ namespace FantasyGame.GamePlay.Entity
 
             if (!IsDirectionZero(relativeDirection))
             {
-                cachedTransform.rotation = Quaternion.LookRotation(nextPosition - currentPosition, Vector3.up);
+                cachedTransform.rotation =
+                    Quaternion.Slerp(cachedTransform.rotation, Quaternion.LookRotation(relativeDirection), rotationSpeed * deltaTime);
                 currentMoveDirection = relativeDirection;
             }
         }

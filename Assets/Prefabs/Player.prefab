@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6498098599546082878}
-  moveSpeed: 6
-  dampingSpeed: 5
+  moveSpeed: 5
+  dampingSpeed: 4
+  rotationSpeed: 8
   characterController: {fileID: 6215311986710729819}
   gravity: 9.8
   relativeTransform: {fileID: 0}

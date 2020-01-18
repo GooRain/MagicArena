@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6498098599546082878}
-  moveSpeed: 5
-  dampingSpeed: 4
+  moveSpeed: 4
+  dampingSpeed: 6
   rotationSpeed: 8
   characterController: {fileID: 6215311986710729819}
   gravity: 9.8
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1daccf7d04a103c488ceb7fef00d5dc4,
         type: 3}

@@ -31,6 +31,10 @@
             </e>
             <e p="UpdateableBehaviour.cs" t="Include" />
           </e>
+          <e p="RayMarching" t="Include">
+            <e p="Explorer.cs" t="Include" />
+            <e p="Mandelbrot.shader" t="Include" />
+          </e>
           <e p="Service" t="Include">
             <e p="ComponentLocator.cs" t="Include" />
             <e p="Locator.cs" t="Include" />
